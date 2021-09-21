@@ -1,5 +1,5 @@
 """
-ASGI config for api_flashcards project.
+ASGI config for Flashcards project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'api_flashcards.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Flashcards.settings')
 
 application = get_asgi_application()

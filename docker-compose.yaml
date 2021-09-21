@@ -1,0 +1,23 @@
+version: "3.3"
+
+services:
+
+  api_flashcards:
+    container_name: api_flashcards
+    command: [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+    build: .
+    tty: true
+    ports:
+      - 8002:8000
+    restart: unless-stopped
+    depends_on:
+      - mongodb_flashcards
+
+  mongodb_flashcards:
+    container_name: mongodb_flashcards
+    image: mongo
+    volumes:
+      - /home/victor/mongodb/database:/data/db
+    ports:
+      - 27018:27017
+    restart: unless-stopped
