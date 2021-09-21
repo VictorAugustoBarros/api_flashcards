@@ -5,3 +5,5 @@
 Uma Api para gerenciamentos dos cards a serem utilizados em outro projeto.
 
 https://github.com/VictorAugustoBarros/Flashcards
+
+# https://digitalinnovation.one/artigos/crud-django
