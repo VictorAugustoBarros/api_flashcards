@@ -1,4 +1,4 @@
-"""Flashcards URL Configuration
+"""Flashcards URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -17,7 +17,4 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib import admin
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('cards/', include("Card.urls"))
-]
+urlpatterns = [path("admin/", admin.site.urls), path("cards/", include("Card.urls"))]
