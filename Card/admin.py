@@ -1,3 +1,5 @@
+"""Card Admin."""
 from django.contrib import admin
+from Card import models
 
-# Register your models here.
+admin.site.register(models.Card)

@@ -1,5 +1,8 @@
+"""Card Apps."""
 from django.apps import AppConfig
 
 
 class CardsConfig(AppConfig):
-    name = 'Card'
+    """Classe Config Cards."""
+
+    name = "Card"

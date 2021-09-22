@@ -2,7 +2,7 @@ from Card.models import Card
 from rest_framework import serializers
 
 
-class CardsSerializer(serializers.HyperlinkedModelSerializer):
+class CardsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = ['japanese', 'portuguese']
+        fields = ["japanese", "portuguese"]

@@ -1,4 +1,4 @@
-"""Flashcards URL Configuration
+"""Flashcards URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -18,5 +18,9 @@ from django.urls import path
 from Card import views
 
 urlpatterns = [
-
+    path("getCards", views.CardList, name="Listagem dos Cards"),
+    path("postCard/", views.CardPost, name="Cadastro de Card"),
+    path("putCard/<str:pk>/", views.CardPut, name="Atualizar um Card"),
+    path("deleteCard/<str:pk>/", views.CardDelete, name="Deletar um único Card"),
+    path("deleteCardsAll/", views.CardDeleteAll, name="deletar todos Cards"),
 ]
