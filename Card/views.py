@@ -10,20 +10,28 @@ from rest_framework import status
 @api_view(["GET"])
 def CardList(request):
     """Método para listar todos os Cards cadastrados."""
-    card = Card.objects.all()
-    serializer = CardsSerializer(card, many=True)
-    return Response(serializer.data)
+    try:
+        card = Card.objects.all()
+        serializer = CardsSerializer(card, many=True)
+        return Response(serializer.data)
+
+    except Exception as err:
+        return Response("Falha ao buscar Cards", status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST"])
 def CardPost(request):
     """Método para cadastrar um novo Card."""
-    serializer = CardsSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
+    try:
+        serializer = CardsSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as err:
+        return Response("Falha ao cadastrar Card: %s" % request.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["PUT"])
