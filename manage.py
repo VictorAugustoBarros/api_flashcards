@@ -2,6 +2,12 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import sentry_sdk
+
+sentry_sdk.init(
+    "https://baf2dd1297b641038527328669da1133@o1007602.ingest.sentry.io/5976397",
+    traces_sample_rate=1.0
+)
 
 
 def main():
