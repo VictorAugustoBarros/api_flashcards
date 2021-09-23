@@ -10,4 +10,4 @@ class CardsSerializer(serializers.ModelSerializer):
         """Classe modelo Card."""
 
         model = Card
-        fields = ["japanese", "portuguese"]
+        fields = ["pk", "japanese", "portuguese"]

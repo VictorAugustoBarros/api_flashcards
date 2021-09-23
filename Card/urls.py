@@ -19,8 +19,8 @@ from Card import views
 
 urlpatterns = [
     path("getCards", views.CardList, name="Listagem dos Cards"),
-    path("postCard/", views.CardPost, name="Cadastro de Card"),
-    path("putCard/<str:pk>/", views.CardPut, name="Atualizar um Card"),
-    path("deleteCard/<str:pk>/", views.CardDelete, name="Deletar um único Card"),
-    path("deleteCardsAll/", views.CardDeleteAll, name="deletar todos Cards"),
+    path("postCard", views.CardPost, name="Cadastro de Card"),
+    path("putCard/<int:pk>", views.CardPut, name="Atualizar um Card"),
+    path("deleteCard/<int:pk>", views.CardDelete, name="Deletar um único Card"),
+    path("deleteCardsAll", views.CardDeleteAll, name="deletar todos Cards"),
 ]

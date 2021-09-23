@@ -16,7 +16,7 @@ def CardList(request):
         return Response(serializer.data)
 
     except Exception as err:
-        return Response("Falha ao buscar Cards", status=status.HTTP_400_BAD_REQUEST)
+        return Response("Erro ao buscar Cards: %s" % err, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["POST"])
@@ -37,28 +37,40 @@ def CardPost(request):
 @api_view(["PUT"])
 def CardPut(request, pk):
     """Método para atualizar o Card do id *pk*."""
-    card = Card.objects.get(id=pk)
-    serializer = CardsSerializer(card, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data)
+    try:
+        card = Card.objects.get(id=pk)
+        serializer = CardsSerializer(card, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as err:
+        return Response("Falha ao atualizar Card: %s" % request.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["DELETE"])
 def CardDelete(request, pk):
     """Método para deletar o Card do id *pk* cadastrado."""
-    card = Card.objects.get(id=pk)
-    card.delete()
-    return Response("Apagado com sucesso!")
+    try:
+        card = Card.objects.get(id=pk)
+        card.delete()
+        return Response("Apagado com sucesso!")
+
+    except Exception as err:
+        return Response("Falha ao deletar Card: %s" % request.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(["DELETE"])
 def CardDeleteAll(request):
     """Método para deletar todos os Cards cadastrados."""
-    cards = Card.objects.all()
-    for card in cards:
-        card.delete()
+    try:
+        cards = Card.objects.all()
+        for card in cards:
+            card.delete()
 
-    return Response("Todos os Cards apagados com sucesso!")
+        return Response("Todos os Cards apagados com sucesso!")
+
+    except Exception as err:
+        return Response("Falha ao deletar todos os Cards: %s" % err, status=status.HTTP_400_BAD_REQUEST)
